@@ -33,7 +33,7 @@
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                       <span class="sr-only">Toggle navigation</span>
                   </button>
-                  <a class="navbar-brand" href="#">Hibernate Spring</a>
+                  <a class="navbar-brand" href="#">ShortCute</a>
               </div>
 
           </div>

@@ -53,23 +53,22 @@ import java.util.Date;
     private User user;
 
     public Url() {
-
+        this.createdAt = new Date();
+        this.code = this.setCode();
     }
 
     public Url(String chaine, User user) {
+        super();
         this.chaine = chaine;
         this.user = user;
-        this.createdAt = new Date();
-        this.code = setCode();
     }
 
     public Url(String chaine) {
+        super();
         this.chaine = chaine;
-        this.createdAt = new Date();
-        this.code = setCode();
     }
 
-    private String setCode() {
+    public String setCode() {
         Random boucle = new Random();
         String code = "";
         for (int i = 0; i < 3; i++) {
@@ -90,13 +89,13 @@ import java.util.Date;
 
     @Override
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "url", "NotEmpty.url.chaine");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "chaine", "NotEmpty.url.chaine");
 
         // Validate an url
-        if (urlValidator(chaine))
-            System.out.print("The given URL " + chaine + " is valid");
+        if (urlValidator(getChaine()))
+            System.out.print("The given URL " + getChaine() + " is valid");
         else
-            System.out.print("The given URL " + chaine + " is not  valid");
+            System.out.print("The given URL " + getChaine() + " is not  valid");
     }
 
 
@@ -108,7 +107,6 @@ import java.util.Date;
             return true;
         }
         catch (URISyntaxException exception) {
-            System.out.println("bad url");
             return false;
         }
 

@@ -4,9 +4,10 @@ import Project.Model.Url;
 import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
-
+@Repository
 public class UrlDAOimpl implements UrlDAO {
 
     @Autowired

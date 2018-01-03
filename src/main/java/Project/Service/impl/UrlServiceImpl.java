@@ -15,9 +15,8 @@ public class UrlServiceImpl implements UrlService {
     private UrlDAO urlDAO;
 
     @Override
-    public long add(Url user) {
-
-        return  urlDAO.add(user);
+    public long add(Url url) {
+        return urlDAO.add(url);
     }
 
     @Override

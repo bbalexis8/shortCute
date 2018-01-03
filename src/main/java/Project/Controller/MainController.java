@@ -1,7 +1,9 @@
 package Project.Controller;
 
+import Project.DAO.UrlDAOimpl;
 import Project.Model.Url;
 import Project.Model.User;
+import Project.Service.UrlService;
 import Project.Service.UserService;
 import Project.Utils.Encode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class MainController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UrlService urlService;
+
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String main(ModelMap modelMap, HttpSession httpSession){
 
@@ -37,7 +42,7 @@ public class MainController {
     }
 
     @RequestMapping( method = RequestMethod.POST , value = "/addUrl")
-    public String addMessage(@ModelAttribute("Url") @Valid Url url, BindingResult result, HttpSession httpSession) {
+    public String addUrl(@ModelAttribute("Url") @Valid Url url, BindingResult result, HttpSession httpSession) {
 
         // Vérification des erreurs
         url.validate(url, result);
@@ -46,7 +51,7 @@ public class MainController {
         }
 
         // Ajout dans la base de données de l'url via un service
-
+        urlService.add(url);
 
         return "redirect:/";
     }
