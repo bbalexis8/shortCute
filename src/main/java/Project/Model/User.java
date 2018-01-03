@@ -31,7 +31,7 @@ public class User implements Serializable {
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(cascade=CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "user")
-    @Getter @Setter private List<Message> messages;
+    @Getter @Setter private List<Url> urlList;
 
     public User() {}
 

@@ -26,7 +26,7 @@ public class UserDAOImpl implements UserDAO {
     public User getById(long id, boolean lazy) {
         User user =  sessionFactory.getCurrentSession().get(User.class, id);
         if (lazy)
-            Hibernate.initialize(user.getMessages());
+            Hibernate.initialize(user.getUrlList());
         return user;
     }
 
