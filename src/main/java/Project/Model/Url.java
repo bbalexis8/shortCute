@@ -59,7 +59,7 @@ import java.util.Date;
         String code="";
         for (int i = 0; i < 3; i++)
         {
-            code += (boucle.nextInt(26) + 'a');
+            code +=(char) (boucle.nextInt(26 )+'a');
 
         }
         for (int i = 0; i < 3; i++)
