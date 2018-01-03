@@ -44,7 +44,7 @@
 
           <div class="row">
 
-              <div class="col-xs-12">
+              <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
                   <p class="lead">Formulaire</p>
                   <div class="list-group">
                         <form:form method="POST" modelAttribute="Url" action="/addUrl">
@@ -55,26 +55,28 @@
                         </form:form>
                   </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                   <div class="well">
                       <div class="text-right">
                            Nombre de liens
                       </div>
                   </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                   <div class="well">
                       <div class="text-right">
                           Nombre d'Utilisateurs
                       </div>
                   </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                   <div class="well">
                       <div class="text-right">
                           Money Money Money
                       </div>
                   </div>
+              </div>
               </div>
           </div>
       </div>
