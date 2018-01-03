@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hibernate Spring Exemple</title>
+    <title>URL ShortCute : raccourci d'adresse Web</title>
 
 
     <spring:url value="/resources/css/style.css" var="mainCss" />
@@ -44,41 +44,36 @@
 
           <div class="row">
 
-              <div class="col-md-3">
-                  <p class="lead">Tchat</p>
+              <div class="col-xs-12">
+                  <p class="lead">Formulaire</p>
                   <div class="list-group">
-
                         <form:form method="POST" modelAttribute="Url" action="/addUrl">
                             <form:errors path="*" cssClass="errorblock" element="div" />
-                            <label for="chaine">Message: </label>
+                            <label for="chaine">URL saisi : </label>
                             <td><form:input type="text" id="chaine" class="form-control" path="chaine" /></td>
-                            <button class="btn btn-primary btn-block" type="submit">Ajouter le message</button>
+                            <button class="btn btn-primary btn-block" type="submit">Soumettre l'URL</button>
                         </form:form>
-
                   </div>
               </div>
-
-              <div class="col-md-9">
+              <div class="col-xs-4">
                   <div class="well">
                       <div class="text-right">
-                            <form:form method="POST" action="/deleteMessage">
-                              <form:errors path="*" cssClass="errorblock" element="div" />
-                              <button class="btn btn-danger" type="submit">Supprimer Messages de: ${User.nom} ${User.prenom} (${User.id})</button>
-                           </form:form>
+                           Nombre de liens
                       </div>
-                      <hr>
-
-                       <c:forEach items="${User.messages}" var="message">
-                            <div class="row">
-                                 <div class="col-md-12">
-                                     <p>${message.message}</p>
-                                     <span class="pull-right">${message.user.nom} (${message.user.id})</span>
-                                     <p>${fn:substring(message.encode, 0, 70)}...</p>
-                                 </div>
-                             </div>
-                             <hr>
-                       </c:forEach>
-
+                  </div>
+              </div>
+              <div class="col-xs-4">
+                  <div class="well">
+                      <div class="text-right">
+                          Nombre d'Utilisateurs
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xs-4">
+                  <div class="well">
+                      <div class="text-right">
+                          Money Money Money
+                      </div>
                   </div>
               </div>
           </div>
