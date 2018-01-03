@@ -3,6 +3,8 @@ package Project.Model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +14,7 @@ import java.util.Date;
 
 @Entity
     @Table(name = "Url")
-    public class Url implements Serializable {
+    public class Url implements Serializable, Validator {
 
         private static final long serialVersionUID = 368875986784459499L;
 
@@ -34,7 +36,7 @@ import java.util.Date;
 
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "id_user", nullable = false)
+        @JoinColumn(name = "id_user", nullable = true)
         @Getter @Setter private User user;
 
         public Url() {
@@ -70,5 +72,13 @@ import java.util.Date;
     }
 
 
+    @Override
+    public boolean supports(Class<?> aClass) {
+        return false;
+    }
 
+    @Override
+    public void validate(Object o, Errors errors) {
+
+    }
 }

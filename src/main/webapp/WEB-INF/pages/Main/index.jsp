@@ -48,15 +48,13 @@
                   <p class="lead">Tchat</p>
                   <div class="list-group">
 
-                        <form:form method="POST" modelAttribute="Message" action="/addMessage">
+                        <form:form method="POST" modelAttribute="Url" action="/addUrl">
                             <form:errors path="*" cssClass="errorblock" element="div" />
-                            <label for="message">Message: </label>
-                            <td><form:input type="text" id="message" class="form-control" path="message" /></td>
-                            <td><form:errors path="message" cssClass="error" /></td>
+                            <label for="chaine">Message: </label>
+                            <td><form:input type="text" id="chaine" class="form-control" path="chaine" /></td>
                             <button class="btn btn-primary btn-block" type="submit">Ajouter le message</button>
                         </form:form>
 
-                      <a href="/deleteUser" class="list-group-item active">Supprimer l'utilisateur: ${User.id}</a>
                   </div>
               </div>
 

@@ -1,12 +1,10 @@
 package Project.Controller;
 
-import Project.Model.Message;
+import Project.Model.Url;
 import Project.Model.User;
-import Project.Service.MessageService;
 import Project.Service.UserService;
 import Project.Utils.Encode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -29,103 +27,26 @@ public class MainController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private MessageService messageService;
-
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String main(ModelMap modelMap, HttpSession httpSession){
 
-        User userSession = (User) httpSession.getAttribute("User");
-        if (userSession == null) {
-            // Création de l'utilisateur
-            long id = userService.add(new User("Demo", "Test"));
-
-
-            ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-            Validator validator = factory.getValidator();
-            Set<ConstraintViolation<User>> constraintViolations = validator.validate( new User("M", "Racine") );
-            Iterator<ConstraintViolation<User>> iterator = constraintViolations.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-            }
-
-            // Récupération de l'utilisateur
-            userSession = userService.getById(id, false);
-
-            // Création de 2 messages
-            messageService.add(new Message("Message 1", userSession));
-            messageService.add(new Message("Message 2", userSession));
-
-            // Récupération de l'utilisateur
-            userSession = userService.getById(id, true);
-
-            // Sauvegarde de l'utilisateur dans la session
-            httpSession.setAttribute("User", userSession);
-        }
-
         // Ajouter les éléments à la vue
-        modelMap.addAttribute("User", userSession);
-        modelMap.addAttribute("Message", new Message());
-
+        modelMap.addAttribute("Url", new Url());
 
         return "Main/index";
     }
 
-    @RequestMapping( method = RequestMethod.POST , value = "/addMessage")
-    public String addMessage(@ModelAttribute("Message") @Valid Message message, BindingResult result, ModelMap modelMap, HttpSession httpSession) {
-
-        // Récupération de l'utilisateur courant
-        User user = (User) httpSession.getAttribute("User");
+    @RequestMapping( method = RequestMethod.POST , value = "/addUrl")
+    public String addMessage(@ModelAttribute("Url") @Valid Url url, BindingResult result, HttpSession httpSession) {
 
         // Vérification des erreurs
-        message.validate(message, result);
+        url.validate(url, result);
         if (result.hasErrors()) {
             return "Main/index";
         }
 
-        // Ajout du Message
-        message.setEncode(Encode.encodeSHA512(message.getMessage(), null));
-        message.setUser(user);
-        messageService.add(message);
+        // Ajout dans la base de données de l'url via un service
 
-        user.getMessages().add(message);
-
-        // Mise à jour de la session
-        httpSession.setAttribute("User", user);
-
-        // Ajouter les éléments à la vue
-        modelMap.addAttribute("User", user);
-
-        return "redirect:/";
-    }
-
-    @RequestMapping( method = RequestMethod.GET , value = "/deleteUser")
-    public String deleteUser(HttpSession httpSession, SessionStatus status) {
-
-        // Récupération de l'utilisateur courant
-        User user = (User) httpSession.getAttribute("User");
-
-        // Suppression de l'utilisateur
-        userService.delete(user);
-
-        // Suppression de la session
-        status.setComplete();
-
-        return "redirect:/";
-    }
-
-    @RequestMapping( method = RequestMethod.POST , value = "/deleteMessage")
-    public String deleteMessage(HttpSession httpSession, SessionStatus status) {
-
-        // Récupération de l'utilisateur courant
-        User user = (User) httpSession.getAttribute("User");
-
-        // Suppression de l'utilisateur
-        messageService.deleteAll(user);
-        user.setMessages(new ArrayList<Message>());
-
-        // Mise à jour de la session
-        httpSession.setAttribute("User", user);
 
         return "redirect:/";
     }
