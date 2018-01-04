@@ -2,6 +2,7 @@ package Project.DAO;
 
 import Project.Model.Url;
 import org.hibernate.Hibernate;
+import org.hibernate.query.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,9 +28,12 @@ public class UrlDAOimpl implements UrlDAO {
         return url;
     }
 
+
     public Url getByCode(String code) {
-        Url url = sessionFactory.getCurrentSession().get(Url.class, code);
-        return url;
+        Query query = sessionFactory.getCurrentSession().createQuery("from Url WHERE code = :code");
+        query.setParameter("code", code);
+
+        return (Url) query.getSingleResult();
     }
 
 

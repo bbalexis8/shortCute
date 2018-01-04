@@ -17,7 +17,7 @@ public class RedirectController {
     @Autowired
     private UrlService urlService;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/{code}")
+    @RequestMapping(method = RequestMethod.GET, value = "/{code}")
     public String redirectUrl(@PathVariable("code") String code) {
         if (code.length() == 6) {
 

@@ -49,11 +49,15 @@
                   <div class="list-group">
                         <form:form method="POST" modelAttribute="Url" action="/addUrl">
                             <form:errors path="*" cssClass="errorblock" element="div" />
-                            <label for="chaine">URL saisi : </label>
+                            <label for="chaine">Saisir url : </label>
                             <td><form:input type="text" id="chaine" class="form-control" path="chaine" /></td>
                             <button class="btn btn-primary btn-block" type="submit">Soumettre l'URL</button>
                         </form:form>
                   </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+              <label>Url saisie :</label>
+                  <label></label>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">

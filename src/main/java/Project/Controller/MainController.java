@@ -49,6 +49,6 @@ public class MainController {
         // Ajout dans la base de données de l'url via un service
         urlService.add(url);
 
-        return "redirect:/";
+        return "redirect:/" + url;
     }
 }

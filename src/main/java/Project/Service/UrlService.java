@@ -10,5 +10,5 @@ public interface UrlService {
 
     public void delete(Url url);
 
-    Url getByCode(String code);
+    public Url getByCode(String code);
 }
