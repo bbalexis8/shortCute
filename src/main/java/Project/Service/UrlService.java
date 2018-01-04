@@ -9,4 +9,6 @@ public interface UrlService {
     public Url getById(long id, boolean lazy);
 
     public void delete(Url url);
+
+    Url getByCode(String code);
 }

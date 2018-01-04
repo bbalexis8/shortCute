@@ -9,4 +9,6 @@ public interface UrlDAO {
     public Url getById(long id, boolean lazy);
 
     public void delete(Url url);
+
+    public Url getByCode(String code);
 }

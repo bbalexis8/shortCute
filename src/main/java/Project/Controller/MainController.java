@@ -1,11 +1,10 @@
 package Project.Controller;
 
-import Project.DAO.UrlDAOimpl;
+
 import Project.Model.Url;
 import Project.Model.User;
 import Project.Service.UrlService;
 import Project.Service.UserService;
-import Project.Utils.Encode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,9 +17,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
 
 @Controller
 @SessionAttributes(value = "User", types = { User.class })

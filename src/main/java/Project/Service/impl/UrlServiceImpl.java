@@ -25,6 +25,10 @@ public class UrlServiceImpl implements UrlService {
         return urlDAO.getById(id,lazy);
     }
 
+    public Url getByCode(String code){
+        return urlDAO.getByCode(code);
+    }
+
     @Override
     public void delete(Url user) {
 

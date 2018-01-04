@@ -27,6 +27,13 @@ public class UrlDAOimpl implements UrlDAO {
         return url;
     }
 
+    public Url getByCode(String code) {
+        Url url = sessionFactory.getCurrentSession().get(Url.class, code);
+        return url;
+    }
+
+
+
     @Override
     public void delete(Url url) {
         sessionFactory.getCurrentSession().remove(url);
