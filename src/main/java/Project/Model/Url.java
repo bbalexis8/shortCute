@@ -3,6 +3,7 @@ package Project.Model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.validator.UrlValidator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -89,30 +90,10 @@ import java.util.Date;
 
     @Override
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "chaine", "NotEmpty.url.chaine");
 
-        // Validate an url
-        if (urlValidator(getChaine()))
-            System.out.print("The given URL " + getChaine() + " is valid");
-        else
-            System.out.print("The given URL " + getChaine() + " is not  valid");
-    }
-
-
-    public static boolean urlValidator(String url)
-    {
-        /*validating url*/
-        try {
-            new URL(url).toURI();
-            return true;
-        }
-        catch (URISyntaxException exception) {
-            return false;
-        }
-
-        catch (MalformedURLException exception) {
-            return false;
-        }
+        UrlValidator urlValidator = new UrlValidator();
+        if (!urlValidator.isValid(getChaine()))
+            errors.rejectValue("chaine", "NotValid.url.chaine");
     }
 
 }

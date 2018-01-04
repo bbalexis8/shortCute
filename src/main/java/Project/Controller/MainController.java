@@ -46,9 +46,11 @@ public class MainController {
             return "Main/index";
         }
 
-        // Ajout dans la base de données de l'url via un service
-        urlService.add(url);
+        System.out.println("lol");
 
-        return "redirect:/" + url;
+            // Ajout dans la base de données de l'url via un service
+            urlService.add(url);
+            return "redirect:/?code=" + url.getCode();
+
     }
 }
