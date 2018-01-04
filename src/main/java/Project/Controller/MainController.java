@@ -33,11 +33,11 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String main(ModelMap modelMap, HttpSession httpSession){
 
-        List liste = urlService.getLast(10);
         // Ajouter les éléments à la vue
         modelMap.addAttribute("Url", new Url());
-        modelMap.addAttribute("liste");
-
+        modelMap.addAttribute("liste", urlService.getLast(10));
+        modelMap.addAttribute("urlCount", urlService.getUrlCount());
+        modelMap.addAttribute("userCount", userService.getUserCount());
         return "Main/index";
     }
 
@@ -56,7 +56,6 @@ public class MainController {
             urlService.add(url);
             return "redirect:/?code=" + url.getCode();
     }
-
 
 
 }

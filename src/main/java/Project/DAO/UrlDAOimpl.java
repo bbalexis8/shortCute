@@ -39,10 +39,15 @@ public class UrlDAOimpl implements UrlDAO {
         return (Url) query.getSingleResult();
     }
 
-    public List getLast(Integer limite) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Url LIMIT limite = :limite ordered by ASC");
-        query.setParameter("limite", limite);
+    public List getLast(int limite) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from Url order by createdAt ASC");
+        query.setMaxResults(limite);
         return query.getResultList();
+    }
+
+    public long getUrlCount() {
+        Query query = sessionFactory.getCurrentSession().createQuery("select count(*) from Url");
+        return (long) query.getSingleResult();
     }
 
 

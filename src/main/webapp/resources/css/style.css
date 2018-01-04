@@ -11,3 +11,24 @@
     padding: 8px;
     margin: 16px;
 }
+
+#logoDiv {
+    text-align: center;
+}
+
+#logoDiv img {
+    width: 150px;
+}
+
+#sendUrl {
+    margin-top: 2%;
+}
+
+#codeDiv {
+    background-color: gold;
+    border-radius: 20px;
+    text-align: center;
+    height: 50px;
+    padding-top: 15px;
+    margin-bottom: 2%;
+}

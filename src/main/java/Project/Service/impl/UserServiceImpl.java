@@ -28,4 +28,8 @@ public class UserServiceImpl implements UserService {
         public void delete(User user) {
                 userDAO.delete(user);
         }
+
+        public long getUserCount() {
+                return userDAO.getUserCount();
+        }
 }

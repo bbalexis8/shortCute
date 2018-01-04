@@ -32,8 +32,12 @@ public class UrlServiceImpl implements UrlService {
         return urlDAO.getByCode(code);
     }
 
-    public List getLast(Integer limite){
+    public List getLast(int limite){
         return urlDAO.getLast(limite);
+    }
+
+    public long getUrlCount() {
+        return urlDAO.getUrlCount();
     }
 
     @Override

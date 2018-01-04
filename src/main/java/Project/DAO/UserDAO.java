@@ -9,4 +9,6 @@ public interface UserDAO {
     public User getById(long id, boolean lazy);
 
     public void delete(User user);
+
+    public long getUserCount();
 }

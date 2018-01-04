@@ -45,42 +45,49 @@
           <div class="row">
 
               <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-                  <p class="lead">Formulaire</p>
+                  <div id="logoDiv">
+                    <img src="../../../resources/img/shortCute_logo.png">
+                  </div>
                   <div class="list-group">
                         <form:form method="POST" modelAttribute="Url" action="/addUrl">
                             <form:errors path="*" cssClass="errorblock" element="div" />
                             <label for="chaine">Saisir url : </label>
                             <td><form:input type="text" id="chaine" class="form-control" path="chaine" /></td>
-                            <button class="btn btn-primary btn-block" type="submit">Soumettre l'URL</button>
+                            <button id="sendUrl" class="btn btn-primary btn-block" type="submit">Soumettre l'URL</button>
                         </form:form>
                   </div>
               </div>
-              <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-              <label>Code de redirection de l'url :</label>
-                  <label class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"><%= request.getParameter("code") %></label>
+              <div id="codeDiv" class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+                  <label>Code de redirection de l'url :</label>
+                  <label><%= request.getParameter("code") %></label>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <div class="well">
-                      <div class="text-right">
-                           Nombre de liens
+                      <div class="text-center">
+                           <p>Nombre de liens : ${urlCount}</p>
+                           <p>Nombre d'utilisateur(s) : ${userCount}</p>
                       </div>
                   </div>
               </div>
-              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <div class="well">
-                      <div class="text-right">
-                          Nombre d'Utilisateurs
+                      <div class="text-left">
+
+                          <c:forEach items="${liste}" var="url">
+                              <div class="row">
+                                  <div class="col-md-12">
+                                      <p>Date : ${url.createdAt}</p>
+                                      <p>Url : ${url.chaine}</p>
+                                  </div>
+                              </div>
+                              <hr>
+                          </c:forEach>
+
                       </div>
                   </div>
               </div>
-              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                  <div class="well">
-                      <div class="text-right">
-                          Money Money Money
-                      </div>
-                  </div>
-              </div>
+
               </div>
           </div>
       </div>

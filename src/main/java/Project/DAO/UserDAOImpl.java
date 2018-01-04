@@ -3,6 +3,7 @@ package Project.DAO;
 import Project.Model.User;
 import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -33,5 +34,11 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void delete(User user) {
         sessionFactory.getCurrentSession().remove(user);
+    }
+
+    @Override
+    public long getUserCount() {
+        Query query = sessionFactory.getCurrentSession().createQuery("select count(*) from User");
+        return (long) query.getSingleResult();
     }
 }

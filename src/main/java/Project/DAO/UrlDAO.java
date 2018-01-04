@@ -15,4 +15,6 @@ public interface UrlDAO {
     public Url getByCode(String code);
 
     public List getLast(int limite);
+
+    public long getUrlCount();
 }
