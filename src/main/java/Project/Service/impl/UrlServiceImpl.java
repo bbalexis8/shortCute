@@ -7,6 +7,8 @@ package Project.Service.impl;
         import org.springframework.stereotype.Service;
         import org.springframework.transaction.annotation.Transactional;
 
+        import java.util.List;
+
 @Service
 @Transactional
 public class UrlServiceImpl implements UrlService {
@@ -28,6 +30,10 @@ public class UrlServiceImpl implements UrlService {
     public Url getByCode(String code){
 
         return urlDAO.getByCode(code);
+    }
+
+    public List getLast(Integer limite){
+        return urlDAO.getLast(limite);
     }
 
     @Override

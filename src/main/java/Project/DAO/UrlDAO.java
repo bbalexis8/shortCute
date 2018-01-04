@@ -2,6 +2,8 @@ package Project.DAO;
 
 import Project.Model.Url;
 
+import java.util.List;
+
 public interface UrlDAO {
 
     public Long add(Url Url);
@@ -11,4 +13,6 @@ public interface UrlDAO {
     public void delete(Url url);
 
     public Url getByCode(String code);
+
+    public List getLast(int limite);
 }

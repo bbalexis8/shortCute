@@ -17,6 +17,8 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.*;
+import javax.validation.constraints.Max;
+import java.util.List;
 
 @Controller
 @SessionAttributes(value = "User", types = { User.class })
@@ -31,8 +33,10 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String main(ModelMap modelMap, HttpSession httpSession){
 
+        liste = urlService.getLast(10);
         // Ajouter les éléments à la vue
         modelMap.addAttribute("Url", new Url());
+        modelMap.addAttribute("liste");
 
         return "Main/index";
     }
@@ -51,6 +55,8 @@ public class MainController {
             // Ajout dans la base de données de l'url via un service
             urlService.add(url);
             return "redirect:/?code=" + url.getCode();
-
     }
+
+
+
 }

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Repository
 public class UrlDAOimpl implements UrlDAO {
 
@@ -37,6 +39,11 @@ public class UrlDAOimpl implements UrlDAO {
         return (Url) query.getSingleResult();
     }
 
+    public List getLast(Integer limite) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from Url LIMIT limite =: limite ordered by ASC");
+        query.setParameter("limite", limite);
+        return query.getResultList();
+    }
 
 
     @Override
