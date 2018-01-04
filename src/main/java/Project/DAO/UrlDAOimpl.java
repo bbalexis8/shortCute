@@ -40,7 +40,7 @@ public class UrlDAOimpl implements UrlDAO {
     }
 
     public List getLast(Integer limite) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Url LIMIT limite =: limite ordered by ASC");
+        Query query = sessionFactory.getCurrentSession().createQuery("from Url LIMIT limite = :limite ordered by ASC");
         query.setParameter("limite", limite);
         return query.getResultList();
     }

@@ -33,7 +33,7 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String main(ModelMap modelMap, HttpSession httpSession){
 
-        liste = urlService.getLast(10);
+        List liste = urlService.getLast(10);
         // Ajouter les éléments à la vue
         modelMap.addAttribute("Url", new Url());
         modelMap.addAttribute("liste");
